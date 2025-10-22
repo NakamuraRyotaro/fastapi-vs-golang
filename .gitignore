@@ -1,0 +1,79 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+*.db
+
+# =========================
+# Virtual environment
+# =========================
+.venv/
+venv/
+env/
+ENV/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# =========================
+# Byte-compiled / packaging
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# =========================
+# Unit test / coverage reports
+# =========================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# Docker
+# =========================
+data/
+**/data/
+**/mysql/
+*.pid
+*.sock
+
+# =========================
+# Jupyter / temp
+# =========================
+.ipynb_checkpoints
+*.ipynb
+tmp/
+temp/
+
+# =========================
+# Node.js (if frontend later)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
