@@ -15,3 +15,6 @@ class TodoResponse(TodoBase):
     user_id: int
     create_at: datetime
     update_at: datetime
+
+    class Config:
+        from_attributes = True
