@@ -60,8 +60,8 @@ fastapi-vs-golang/
 ├── docs/                       # ドキュメント類
 ├── docker-compose.yml          # ローカル開発用コンテナ設定
 ├── fastapi_app/
-│   ├── .env                    # FastAPI 側の環境変数サンプル
-│   ├── Dockerfile
+│   ├── .env                    # FastAPI 側の環境変数の設定
+│   ├── Dockerfile              # FastAPI コンテナ定義
 │   ├── alembic/
 │   │   └── versions/           # マイグレーションスクリプト
 │   ├── alembic.ini             # Alembic 設定
@@ -75,23 +75,23 @@ fastapi-vs-golang/
 │   │   │   └── user.py         # SQLAlchemy モデル定義
 │   │   ├── repositories/
 │   │   │   ├── todo_repository.py
-│   │   │   └── user_repository.py
+│   │   │   └── user_repository.py  # DB アクセス層
 │   │   ├── services/
 │   │   │   ├── todo_service.py
-│   │   │   └── user_service.py
+│   │   │   └── user_service.py     # ビジネスロジック層
 │   │   ├── routers/
 │   │   │   ├── todo_router.py
-│   │   │   └── user_router.py
+│   │   │   └── user_router.py      # FastAPI ルーター定義
 │   │   └── schemas/
 │   │       ├── todo_schema.py
 │   │       └── user_schema.py  # Pydantic スキーマ
 │   ├── main.py                 # FastAPI エントリポイント
-│   ├── pytest.ini
-│   ├── requirements.txt
+│   ├── pytest.ini              # Pytest 設定
+│   ├── requirements.txt        # Python 依存パッケージ定義
 │   └── tests/
-│       ├── repositories/
-│       ├── routers/
-│       ├── services/
+│       ├── repositories/       # リポジトリ層のユニットテスト
+│       ├── routers/            # ルーター/API エンドポイントのテスト
+│       ├── services/           # サービス層のユニットテスト
 │       └── conftest.py         # in-memory SQLite を共有するフィクスチャ
 ├── go_app/                     # Go 実装（ディレクトリ構成は順次整備）
 └── README.md                   # このドキュメント
