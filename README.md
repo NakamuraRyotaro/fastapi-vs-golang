@@ -45,6 +45,9 @@ uvicorn main:app --reload
 
 ```
 fastapi_app/
+├── alembic/
+│   └── versions/               # マイグレーションスクリプト
+├── alembic.ini                 # Alembic 設定
 ├── app/
 │   ├── config/
 │   │   └── settings.py         # Pydantic Settings による設定読み込み
