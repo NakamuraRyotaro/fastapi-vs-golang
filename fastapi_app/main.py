@@ -1,13 +1,8 @@
+# app/main.py
 from fastapi import FastAPI
-import os
+from app.routers import user_router, todo_router
 
-app = FastAPI()
+app = FastAPI(title="FastAPI Todo App")
 
-@app.get("/")
-def read_root():
-    return {
-        "message": "Hello, World!",
-        "app_name": os.getenv("APP_NAME"),
-        "environment": os.getenv("APP_ENV"),
-        "version": os.getenv("APP_VERSION")
-        }
+app.include_router(user_router.router)
+app.include_router(todo_router.router)
