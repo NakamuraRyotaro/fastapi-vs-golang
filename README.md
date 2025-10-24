@@ -34,47 +34,67 @@ DB_NAME=...
 
 ## アプリケーションの起動
 
+### Docker を利用する場合
+
+```bash
+docker-compose up --build
+```
+
+FastAPI は `http://127.0.0.1:8000`、Swagger UI は `http://127.0.0.1:8000/docs` で確認できます。Go 側のサービスも同時に立ち上がります。
+
+### ローカルで FastAPI を動かす場合
+
 ```bash
 cd fastapi_app
 uvicorn main:app --reload
 ```
 
-`http://127.0.0.1:8000/docs` で OpenAPI ドキュメントが確認できます。
+この場合も Swagger UI は `http://127.0.0.1:8000/docs` から確認できます。
 
 ## ディレクトリ構成 (抜粋)
 
 ```
-fastapi_app/
-├── alembic/
-│   └── versions/               # マイグレーションスクリプト
-├── alembic.ini                 # Alembic 設定
-├── app/
-│   ├── config/
-│   │   └── settings.py         # Pydantic Settings による設定読み込み
-│   ├── db/
-│   │   └── database.py         # Engine/Session 定義と依存性プロバイダ
-│   ├── models/
-│   │   ├── todo.py
-│   │   └── user.py             # SQLAlchemy モデル定義
-│   ├── repositories/
-│   │   ├── todo_repository.py
-│   │   └── user_repository.py  # DB アクセスを担当
-│   ├── services/
-│   │   ├── todo_service.py
-│   │   └── user_service.py     # ビジネスロジックとバリデーション
-│   ├── routers/
-│   │   ├── todo_router.py
-│   │   └── user_router.py      # FastAPI ルーター
-│   └── schemas/
-│       ├── todo_schema.py
-│       └── user_schema.py      # Pydantic スキーマ
-├── tests/
-│   ├── repositories/
-│   ├── routers/
-│   ├── services/
-│   └── conftest.py             # in-memory SQLite を共有するフィクスチャ
-├── main.py                     # FastAPI エントリポイント
-└── requirements.txt            # 依存関係
+fastapi-vs-golang/
+├── benchmark/                  # ベンチマーク関連スクリプト・データ
+├── data/                       # 共有データ置き場
+├── docs/                       # ドキュメント類
+├── docker-compose.yml          # ローカル開発用コンテナ設定
+├── fastapi_app/
+│   ├── .env                    # FastAPI 側の環境変数サンプル
+│   ├── Dockerfile
+│   ├── alembic/
+│   │   └── versions/           # マイグレーションスクリプト
+│   ├── alembic.ini             # Alembic 設定
+│   ├── app/
+│   │   ├── config/
+│   │   │   └── settings.py     # Pydantic Settings による設定読み込み
+│   │   ├── db/
+│   │   │   └── database.py     # Engine/Session 定義と依存性プロバイダ
+│   │   ├── models/
+│   │   │   ├── todo.py
+│   │   │   └── user.py         # SQLAlchemy モデル定義
+│   │   ├── repositories/
+│   │   │   ├── todo_repository.py
+│   │   │   └── user_repository.py
+│   │   ├── services/
+│   │   │   ├── todo_service.py
+│   │   │   └── user_service.py
+│   │   ├── routers/
+│   │   │   ├── todo_router.py
+│   │   │   └── user_router.py
+│   │   └── schemas/
+│   │       ├── todo_schema.py
+│   │       └── user_schema.py  # Pydantic スキーマ
+│   ├── main.py                 # FastAPI エントリポイント
+│   ├── pytest.ini
+│   ├── requirements.txt
+│   └── tests/
+│       ├── repositories/
+│       ├── routers/
+│       ├── services/
+│       └── conftest.py         # in-memory SQLite を共有するフィクスチャ
+├── go_app/                     # Go 実装（ディレクトリ構成は順次整備）
+└── README.md                   # このドキュメント
 ```
 
 ## テスト
@@ -88,4 +108,4 @@ pytest
 
 ## Go 側
 
-`go_app` ディレクトリに Go 実装が置く予定です。現在実装進行中で、順次アップデート予定です。
+`go_app` ディレクトリに Go 実装を置く予定です。現在実装進行中で、順次アップデート予定です。
